@@ -23,6 +23,7 @@ const app = express()
 
 app.use( express.json() )
 //Authentication
+//Auth
 app.use(authenticateUser)
 app.use("/users", userRouter)
 app.use("/products", productRouter)

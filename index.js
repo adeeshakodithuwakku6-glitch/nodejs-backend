@@ -4,6 +4,9 @@ import userRouter from './routers/userRouter.js'
 import jwt from "jsonwebtoken"
 import authenticateUser from './middlewares/authenticate.js'
 import productRouter from './routers/productRouter.js'
+import dns from "node:dns";
+
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -12,6 +15,10 @@ const mongoUri = process.env.MONGO_URI
 mongoose.connect(mongoUri).then(
     ()=>{
         console.log("Connected to MongoDB")
+    }
+).catch(
+    (error)=>{
+        console.log("Error connecting to MongoDB:", error)
     }
 )
 
